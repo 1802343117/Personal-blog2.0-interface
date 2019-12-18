@@ -1,7 +1,12 @@
 package com.blog.entity;
 import lombok.Data;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Random;
 
 /**
  * @author zhao
@@ -39,6 +44,14 @@ public class User {
     public void setAccount(String account){
         this.account = account;
     }
+    //自主生成账号
+    public String getAccountsc() {
+        int c = new Random().nextInt(99999);
+        int n = new Random().nextInt(99999);
+        String accountsc = Integer.toString(c);
+        String accountsn = Integer.toString(n);
+        return  accountsc + accountsn;
+    }
 
     public String getPassword(){
         return password;
@@ -60,6 +73,9 @@ public class User {
     public void setAvatar(String avatar){
         this.avatar = avatar;
     }
+    public String getAvatarmr() {
+        return "http://1t.click/byut";
+    }
 
     public String getGender(){
         return gender;
@@ -73,6 +89,14 @@ public class User {
     }
     public void setBirthday(LocalDate birthday){
         this.birthday = birthday;
+    }
+    public String getBirthdaysc() {
+        //创建日期
+        Date sj = new Date();
+        //创建不同的日期格式
+        DateFormat date1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");    /*--获得当前时间--*/
+        System.out.println(sj);
+        return date1.format(sj);
     }
 
     public String getAddress(){
@@ -101,6 +125,14 @@ public class User {
     }
     public void setCreateTime(LocalDateTime createTime){
         this.createTime = createTime;
+    }
+    public String getCreateTimesc() {
+        //创建日期
+        Date sj = new Date();
+        //创建不同的日期格式
+        DateFormat date1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");    /*--获得当前时间--*/
+        System.out.println(sj);
+        return date1.format(sj);
     }
 
     public Short getStatus(){

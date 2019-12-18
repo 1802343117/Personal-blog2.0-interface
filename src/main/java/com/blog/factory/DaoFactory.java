@@ -1,13 +1,10 @@
 package com.blog.factory;
 
-import com.blog.dao.ArticleDao;
-import com.blog.dao.GalleryDao;
-import com.blog.dao.MusicDao;
-import com.blog.dao.UserDao;
-import com.blog.dao.impl.ArticleDaoImpl;
-import com.blog.dao.impl.GalleryDaoImpl;
-import com.blog.dao.impl.MusicDaoImpl;
-import com.blog.dao.impl.UserDaoImpl;
+import com.blog.dao.*;
+import com.blog.dao.impl.*;
+import com.blog.entity.Leave;
+import com.blog.entity.Record;
+import com.blog.entity.Space;
 
 public class DaoFactory {
     public static UserDao getUserDaoInstance(){
@@ -25,4 +22,28 @@ public class DaoFactory {
     public static MusicDao getMusicDaoInstance(){
         return (MusicDao) new MusicDaoImpl();
     }
+
+    public static ToolDao getToolDaoInstance(){
+        return (ToolDao) new ToolDaoImpl();
+    }
+
+    public static LeaveDao getLeaveDaoInstance() {
+        return (LeaveDao) new LeaveDaoImpl();
+    }
+
+    public static SpaceDao getSpaceDaoInstance() {
+        return (SpaceDao) new SpaceDaoImpl();
+    }
+
+    public static RecordDao getRecordDaoInstance() {
+        return (RecordDao) new RecordDaoImpl();
+    }
+
+    public static CommDao getCommDaoInstance() {
+        return (CommDao) new CommDaoImpl();
+    }
+
+//    public static TopicDao getTopicDaoInstance() {
+//        return new TopicDaoImpl();
+//    }
 }
