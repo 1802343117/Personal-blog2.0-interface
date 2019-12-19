@@ -27,13 +27,13 @@ import java.util.List;
  * @author:zhuoran
  * @Date: 2019/10/10 10:33
  */
-@WebServlet(urlPatterns = { "/comm", "/comm/*" })
+@WebServlet(urlPatterns = {"/comm", "/comm/*"})
 public class CommController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String requestPath = req.getRequestURI().trim();
-        if("/comm".equals(requestPath)) {
+        if ("/comm".equals(requestPath)) {
             seletAll(req, resp);
         } else {
             getComm(req, resp);
@@ -42,24 +42,26 @@ public class CommController extends HttpServlet {
 
     /**
      * 根据id查找评论
+     *
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
      */
-    private void getComm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    private void getComm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //
         String requestPath = req.getRequestURI().trim();
         int position = requestPath.lastIndexOf("/");
         String id = requestPath.substring(position + 1);
-        Entity comm = null;
+//        Entity comm = null;
+        List<Entity> comm = null;
         try {
             comm = DaoFactory.getCommDaoInstance().getComm(Integer.parseInt(id));
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("这是集合中的元素："+comm.toString());
-        System.out.println(comm);
+        System.out.println("这是集合中的元素：" + comm.toString());
+//        System.out.println(comm);
         int code = resp.getStatus();
         String msg = code == 200 ? "成功" : "失败";
         ResponseObject ro = ResponseObject.success(code, msg, comm);
@@ -72,13 +74,12 @@ public class CommController extends HttpServlet {
     }
 
     /**
-     *
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
      */
-    private void seletAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    private void seletAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Entity> entityList = null;
         try {
             entityList = DaoFactory.getCommDaoInstance().CommAll();
@@ -88,9 +89,9 @@ public class CommController extends HttpServlet {
 
         ResponseObject ro = new ResponseObject();
         ro.setCode(resp.getStatus());
-        if(resp.getStatus() == 200){
+        if (resp.getStatus() == 200) {
             ro.setMsg("请求成功");
-        }else{
+        } else {
             ro.setMsg("请求失败");
         }
         ro.setData(entityList);
@@ -107,7 +108,7 @@ public class CommController extends HttpServlet {
 
     /**
      * 添加
-     * */
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -142,6 +143,7 @@ public class CommController extends HttpServlet {
 
     /**
      * 根据id删除评论，返回受影响的行数
+     *
      * @param
      * @return
      * @throws SQLException
@@ -170,7 +172,7 @@ public class CommController extends HttpServlet {
 
     /**
      * 修改信息
-     * */
+     */
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");

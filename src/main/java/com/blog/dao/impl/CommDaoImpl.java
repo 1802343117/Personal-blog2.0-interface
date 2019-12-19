@@ -1,6 +1,7 @@
 package com.blog.dao.impl;
 
-import cn.hutool.db.Db;
+import cn.hutool
+        .db.Db;
 import cn.hutool.db.Entity;
 import com.blog.dao.CommDao;
 import com.blog.entity.Comm;
@@ -33,6 +34,7 @@ public class CommDaoImpl implements CommDao {
 
     /**
      * 根据id删除评论，返回受影响的行数
+     *
      * @param id
      * @return
      * @throws SQLException
@@ -44,18 +46,22 @@ public class CommDaoImpl implements CommDao {
 
     /**
      * 根据id查找评论
+     *
      * @param id
      * @return
      * @throws SQLException
      */
     @Override
-    public Entity getComm(int id) throws SQLException {
+    public List<Entity> getComm(int id) throws SQLException {
         System.out.println("传入的值为："+id);
-        return Db.use().find(Entity.create("comments").set("article_id", id)).get(10);
+//        return Db.use().find(Entity.create("comments").set("id", id)).get(1);
+        List<Entity> result = Db.use().query("SELECT * FROM  comments  WHERE id = ?", id);
+        return result;
     }
 
     /**
      * 更新评论信息
+     *
      * @param
      * @return
      * @throws SQLException

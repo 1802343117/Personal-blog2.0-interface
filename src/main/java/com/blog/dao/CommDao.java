@@ -30,7 +30,7 @@ public interface CommDao {
      * @return
      * @throws SQLException
      */
-    Entity getComm(int id) throws SQLException;
+    List<Entity> getComm(int id) throws SQLException;
 
     /**
      * 更新评论信息
