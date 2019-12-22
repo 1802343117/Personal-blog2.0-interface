@@ -18,8 +18,8 @@ public class Article {
     private String cover;
     private int comments;
     private int likes;
-    private LocalDateTime publishTime;
-    private LocalDateTime update;
+    private LocalDate publishTime;
+    private LocalDate update;
 
     public Long getId(){
         return id;
@@ -63,17 +63,17 @@ public class Article {
         this.likes = likes;
     }
 
-    public LocalDateTime getPublishTime(){
+    public LocalDate getPublishTime(){
         return publishTime;
     }
-    public void setPublishTime(LocalDateTime publishTime){
+    public void setPublishTime(LocalDate publishTime){
         this.publishTime = publishTime;
     }
 
-    public LocalDateTime getUpdate(){
+    public LocalDate getUpdate(){
         return update;
     }
-    public void setUpdate(LocalDateTime update){
+    public void setUpdate(LocalDate update){
         this.update = update;
     }
 }

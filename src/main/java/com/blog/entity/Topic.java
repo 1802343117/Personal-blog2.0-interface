@@ -2,6 +2,7 @@ package com.blog.entity;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -21,7 +22,7 @@ public class Topic {
     private String description;
     private Integer articles;
     private Integer follows;
-    private LocalDateTime createTime;
+    private LocalDate createTime;
 
     public Long getId() {
         return id;
@@ -79,11 +80,11 @@ public class Topic {
         this.follows = follows;
     }
 
-    public LocalDateTime getCreateTime() {
+    public LocalDate getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
+    public void setCreateTime(LocalDate createTime) {
         this.createTime = createTime;
     }
 }

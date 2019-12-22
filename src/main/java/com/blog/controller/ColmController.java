@@ -1,7 +1,8 @@
 package com.blog.controller;
 
 import cn.hutool.db.Entity;
-import com.blog.entity.Record;
+import com.blog.entity.Colm;
+import com.blog.entity.Comm;
 import com.blog.factory.DaoFactory;
 import com.blog.utils.ResponseObject;
 import com.google.gson.Gson;
@@ -15,52 +16,53 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Type;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * @classname:UserController
- * @description:成长记录控制层
+ * @description:空间评论控制层
  * @author:zhuoran
  * @Date: 2019/10/10 10:33
  */
-@WebServlet(urlPatterns = "/record")
-public class RecordController extends HttpServlet {
-
+@WebServlet(urlPatterns = {"/colm", "/colm/*"})
+public class ColmController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String requestPath = req.getRequestURI().trim();
-        if("/record".equals(requestPath)) {
+        if ("/colm".equals(requestPath)) {
             seletAll(req, resp);
         } else {
-            getRecord(req, resp);
+            getColm(req, resp);
         }
     }
 
     /**
-     * 根据id查找成长记录
+     * 根据id查找评论
+     *
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
      */
-    private void getRecord(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void getColm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //
         String requestPath = req.getRequestURI().trim();
         int position = requestPath.lastIndexOf("/");
         String id = requestPath.substring(position + 1);
-        Entity record = null;
+//        Entity comm = null;
+        List<Entity> comm = null;
         try {
-            record = DaoFactory.getRecordDaoInstance().getRecord(Integer.parseInt(id));
+            comm = DaoFactory.getColmDaoInstance().getColm(Integer.parseInt(id));
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("这是集合中的元素：" + comm.toString());
+//        System.out.println(comm);
         int code = resp.getStatus();
         String msg = code == 200 ? "成功" : "失败";
-        ResponseObject ro = ResponseObject.success(code, msg, record);
+        ResponseObject ro = ResponseObject.success(code, msg, comm);
         resp.setContentType("applacation/json;charset=utf-8");
         Gson gson = new GsonBuilder().create();
         PrintWriter out = resp.getWriter();
@@ -70,25 +72,24 @@ public class RecordController extends HttpServlet {
     }
 
     /**
-     *
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
      */
-    private void seletAll(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void seletAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Entity> entityList = null;
         try {
-            entityList = DaoFactory.getRecordDaoInstance().RecordAll();
+            entityList = DaoFactory.getColmDaoInstance().ColmAll();
         } catch (SQLException e) {
             System.err.println("查询用户数据出现异常");
         }
 
         ResponseObject ro = new ResponseObject();
         ro.setCode(resp.getStatus());
-        if(resp.getStatus() == 200){
+        if (resp.getStatus() == 200) {
             ro.setMsg("请求成功");
-        }else{
+        } else {
             ro.setMsg("请求失败");
         }
         ro.setData(entityList);
@@ -103,6 +104,9 @@ public class RecordController extends HttpServlet {
         out.close();
     }
 
+    /**
+     * 添加
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -116,38 +120,39 @@ public class RecordController extends HttpServlet {
         System.out.println(stringBuffer.toString());
         //将接受到的客户端JSON字符串转成User对象
         Gson gson = new GsonBuilder().create();
-        Record record = gson.fromJson(stringBuffer.toString(), Record.class);
+        Colm colm = gson.fromJson(stringBuffer.toString(), Colm.class);
         //补全日期信息
-        record.setPublishtime(LocalDate.now());
+        colm.setPublishTime(LocalDate.now());
         int id = 0;
         try {
-            id = DaoFactory.getRecordDaoInstance().insertRecord(record);
+            id = DaoFactory.getColmDaoInstance().insertColm(colm);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        record.setId((long) id);
+        colm.setId((long) id);
         resp.setContentType("application/json;charset=utf-8");
         int code = resp.getStatus();
         String msg = code == 200 ? "成功" : "失败";
-        ResponseObject ro = ResponseObject.success(code, msg, record);
+        ResponseObject ro = ResponseObject.success(code, msg, colm);
         PrintWriter out = resp.getWriter();
         out.print(gson.toJson(ro));
         out.close();
     }
 
     /**
-     * 根据id删除成长记录，返回受影响的行数
+     * 根据id删除评论，返回受影响的行数
+     *
      * @param
      * @return
      * @throws SQLException
      */
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //获取前端传递的id参数
+        //获取前端传递的id参数,该ID应该为评论的ID
         String id = req.getParameter("id");
         int n = 0;
         try {
-            n = DaoFactory.getRecordDaoInstance().deleteRecordById(Integer.parseInt(id));
+            n = DaoFactory.getColmDaoInstance().deleteColmById(Integer.parseInt(id));
 //            n = DaoFactory.getUserDaoInstance().deleteUserById(Integer.parseInt(id));
         } catch (SQLException e) {
             e.printStackTrace();
@@ -163,6 +168,9 @@ public class RecordController extends HttpServlet {
         out.close();
     }
 
+    /**
+     * 修改信息
+     */
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -174,18 +182,17 @@ public class RecordController extends HttpServlet {
         }
         System.out.println(stringBuilder.toString());
         Gson gson = new GsonBuilder().create();
-        Record record = gson.fromJson(stringBuilder.toString(), (Type) Record.class);
+        Colm colm = gson.fromJson(stringBuilder.toString(), Colm.class);
         int n = 0;
         try {
-            n = DaoFactory.getRecordDaoInstance().updateRecord(record);
-//            n = DaoFactory.getUserDaoInstance().updateUser(leave);
+            n = DaoFactory.getColmDaoInstance().updateColm(colm);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         resp.setContentType("application/json;charset=utf-8");
         int code = resp.getStatus();
         String msg = n == 1 ? "成功" : "失败";
-        ResponseObject ro = ResponseObject.success(code, msg, record);
+        ResponseObject ro = ResponseObject.success(code, msg, colm);
         PrintWriter out = resp.getWriter();
         out.print(gson.toJson(ro));
         out.close();

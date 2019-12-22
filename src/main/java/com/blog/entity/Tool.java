@@ -2,6 +2,7 @@ package com.blog.entity;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -18,7 +19,7 @@ public class Tool {
     private String addres;
     private String cover;
     private int likes;
-    private LocalDateTime publish;
+    private LocalDate publish;
     private String adout;
 
     public Long getId(){
@@ -56,10 +57,10 @@ public class Tool {
         this.likes = likes;
     }
 
-    public LocalDateTime getPublish(){
+    public LocalDate getPublish(){
         return publish;
     }
-    public void setPublish(LocalDateTime publish){
+    public void setPublish(LocalDate publish){
         this.publish = publish;
     }
 

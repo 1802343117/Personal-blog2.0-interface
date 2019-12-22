@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -121,7 +122,7 @@ public class LeaveController extends HttpServlet {
         Gson gson = new GsonBuilder().create();
         Leave leave = gson.fromJson(stringBuffer.toString(), Leave.class);
         //补全日期信息
-        leave.setPublishtime(LocalDateTime.now());
+        leave.setPublishtime(LocalDate.now());
         int id = 0;
         try {
             id = DaoFactory.getLeaveDaoInstance().insertLeave(leave);

@@ -59,8 +59,14 @@ public class UserDaoImpl implements UserDao{
     public int updateUser(User user) throws SQLException {
         return Db.use().update(
                 Entity.create()
+                        .set("avatar", user.getAvatar())
                         .set("nickname", user.getNickname())
-                        .set("address", user.getAddress()),
+                        .set("password", user.getPassword())
+                        .set("gender", user.getGender())
+                        .set("birthday", user.getBirthday())
+                        .set("address", user.getAddress())
+                        .set("mobile", user.getMobile())
+                        .set("introduction", user.getIntroduction()),
                 Entity.create("t_user").set("id", user.getId())
         );
     }

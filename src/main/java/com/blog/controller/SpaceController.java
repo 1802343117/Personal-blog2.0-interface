@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -118,7 +119,7 @@ public class SpaceController extends HttpServlet {
         Gson gson = new GsonBuilder().create();
         Space spcae = gson.fromJson(stringBuffer.toString(), (Type) Space.class);
         //补全日期信息
-        spcae.setPublishtime(LocalDateTime.now());
+        spcae.setPublishtime(LocalDate.now());
         int id = 0;
         try {
             id = DaoFactory.getSpaceDaoInstance().insertSpace(spcae);

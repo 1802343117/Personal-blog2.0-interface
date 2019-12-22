@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Locale;
@@ -22,7 +23,7 @@ public class Leave {
     private boolean tswitch;
     private String username;
     private String content;
-    private LocalDateTime publishtime;
+    private LocalDate publishtime;
     private int likes;
     private String avatar;
     private String additional;
@@ -55,10 +56,10 @@ public class Leave {
         this.content = content;
     }
 
-    public LocalDateTime getPublishtime(){
+    public LocalDate getPublishtime(){
         return publishtime;
     }
-    public void setPublishtime(LocalDateTime publishtime){
+    public void setPublishtime(LocalDate publishtime){
         this.publishtime = publishtime;
     }
     public String getpublishtimesc(){

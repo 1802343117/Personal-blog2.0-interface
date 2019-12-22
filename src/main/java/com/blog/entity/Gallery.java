@@ -2,6 +2,7 @@ package com.blog.entity;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 /**
  * @author zhao
@@ -18,7 +19,7 @@ public class Gallery {
     private String figureinfo;
     private String address;
     private int likes;
-    private LocalDateTime publishTime;
+    private LocalDate publishTime;
 
     public Long getId(){
         return id;
@@ -62,10 +63,10 @@ public class Gallery {
         this.likes = likes;
     }
 
-    public LocalDateTime getPublishTime(){
+    public LocalDate getPublishTime(){
         return publishTime;
     }
-    public void setPublishTime(LocalDateTime publishTime){
+    public void setPublishTime(LocalDate publishTime){
         this.publishTime = publishTime;
     }
 }

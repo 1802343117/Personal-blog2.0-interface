@@ -2,6 +2,7 @@ package com.blog.entity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -9,7 +10,7 @@ public class Space {
     private Long id;
     private String content;
     private String additional;
-    private LocalDateTime publishtime;
+    private LocalDate publishtime;
     private int likes;
 
     public Long getId(){
@@ -33,10 +34,10 @@ public class Space {
         this.additional = additional;
     }
 
-    public LocalDateTime getPublishtime(){
+    public LocalDate getPublishtime(){
         return publishtime;
     }
-    public void setPublishtime(LocalDateTime publishtime){
+    public void setPublishtime(LocalDate publishtime){
         this.publishtime = publishtime;
     }
     public String getPublishtimesc(){

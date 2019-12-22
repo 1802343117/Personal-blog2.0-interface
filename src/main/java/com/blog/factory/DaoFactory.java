@@ -43,6 +43,10 @@ public class DaoFactory {
         return (CommDao) new CommDaoImpl();
     }
 
+    public static ColmDao getColmDaoInstance() {
+        return (ColmDao) new ColmDaoImpl();
+    }
+
 //    public static TopicDao getTopicDaoInstance() {
 //        return new TopicDaoImpl();
 //    }

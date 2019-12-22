@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -124,7 +125,7 @@ public class CommController extends HttpServlet {
         Gson gson = new GsonBuilder().create();
         Comm comm = gson.fromJson(stringBuffer.toString(), Comm.class);
         //补全日期信息
-        comm.setPublishTime(LocalDateTime.now());
+        comm.setPublishTime(LocalDate.now());
         int id = 0;
         try {
             id = DaoFactory.getCommDaoInstance().insertComm(comm);

@@ -7,10 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0537f4dc-4a86-45bd-b6e2-a44a0fcd5409" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blog/controller/ColmController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blog/dao/ColmDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blog/dao/impl/ColmDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blog/entity/Colm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/controller/CommController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/controller/CommController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/dao/CommDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/dao/CommDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/dao/impl/CommDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/dao/impl/CommDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/controller/LeaveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/controller/LeaveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/controller/RecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/controller/RecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/controller/SpaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/controller/SpaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/dao/impl/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/dao/impl/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/entity/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/entity/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/entity/Comm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/entity/Comm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/entity/Gallery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/entity/Gallery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/entity/Leave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/entity/Leave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/entity/Music.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/entity/Music.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/entity/Record.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/entity/Record.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/entity/Space.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/entity/Space.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/entity/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/entity/Tool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/entity/Topic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/entity/Topic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/factory/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/factory/DaoFactory.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -332,8 +348,20 @@
       <workItem from="1576672569172" duration="273000" />
       <workItem from="1576672866302" duration="8410000" />
       <workItem from="1576752274406" duration="430000" />
-      <workItem from="1576753179111" duration="10074000" />
+      <workItem from="1576753179111" duration="10636000" />
+      <workItem from="1576809433421" duration="8154000" />
+      <workItem from="1576926369646" duration="6519000" />
+      <workItem from="1576938497628" duration="2628000" />
+      <workItem from="1577006116252" duration="7591000" />
     </task>
+    <task id="LOCAL-00001" summary="添加了查看评论功能">
+      <created>1576768634979</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1576768634979</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,6 +379,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加了查看评论功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加了查看评论功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
