@@ -47,6 +47,8 @@ public class DaoFactory {
         return (ColmDao) new ColmDaoImpl();
     }
 
+    public static CctavDao getCctavDaoInstance() { return (CctavDao) new CctavDaoImpl(); }
+
 //    public static TopicDao getTopicDaoInstance() {
 //        return new TopicDaoImpl();
 //    }
